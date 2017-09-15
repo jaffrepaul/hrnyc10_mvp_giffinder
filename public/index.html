@@ -3,9 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>MY APP</title>
+  <!-- <script src="node_modules/angular/angular.js"></script> -->
+
 </head>
-<body>
-  Find a gif!!
+<body ng-app="myApp">
+
+<p><a href="#/!">Search Gifs</a></p>
+<a href="#!collection">My Gifs</a>
+
+<script>
+const app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "index.html"
+    })
+    .when("/collection", {
+        templateUrl : "collection.html"
+    })
+});
+</script>
 
   <div>
     <form action="/gifs" method="POST">

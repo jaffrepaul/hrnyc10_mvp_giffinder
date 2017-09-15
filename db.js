@@ -24,5 +24,4 @@ let find = (obj) => {    // find Gif in the DB
   return Gif.find(obj)
 }
 
-
 module.exports.db = db
