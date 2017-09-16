@@ -1,9 +1,12 @@
 <div>
-  <h2>Add Gif</h2>
+  <h2 style="font-size: 50px"></h2>
   <form ng-submit="addGif()">
-    <input type="text" placeholder="Search for a GIF" ng-model="userQuery">  <!-- get value from form > ng-model bind the value of an input field to a variable -->
-    <button type="submit">Search</button>
+    <input type="text" class="field" placeholder="Search for a GIF" ng-model="userInput">  <!-- get value from form > ng-model bind the value of an input field to a variable -->
+    <button type="submit" value="Submit">Search</button>
   </form>
+
+  <img ng-src="{{ currentGif.data.image }}">
+
 </div>
 
   <!-- <div>

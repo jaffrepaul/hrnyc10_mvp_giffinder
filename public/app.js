@@ -1,6 +1,6 @@
-angular.module('App', ['ui.router']) //main app, with 3rd party dependencies (also referenced in HTML)
+angular.module('App', ['ui.router'])
 
-.config(function($stateProvider, $urlRouterProvider) { //configure our app, '$' is something from Angular
+.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state({  //state of the URL
       name: 'form',

@@ -16,8 +16,7 @@ angular.module('App')
         method: "POST",
         url: "/api/gif",
         data: {
-          query: userInput,
-          // image: url
+          query: userInput
         }
       })
     }

@@ -45,7 +45,7 @@ app.post('/api/gif', (req, res) => {  // New entry created (data from Giphy)
     let query = req.body.query;
     let gif = response.data.data[0].images.original.url;
 
-    //save entry to DB
+    //save entry to DB & send to client
     Gif.save(query, gif, (err, gif) => {
       res.send(gif);
     })

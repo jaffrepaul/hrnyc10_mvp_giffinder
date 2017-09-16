@@ -3,21 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title>MY APP</title>
-  <!-- <script src="node_modules/angular/angular.js"></script> -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script> -->
+  <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster" />
   <script src="/scripts/angular/angular.js"></script>
   <script src="/scripts/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="/app.js"></script>
-  <script src="/services/link-factory.js"></script>
+  <script src="/services/gif-factory.js"></script>
   <script src="/controllers/form-controller.js"></script>
   <script src="/controllers/list-controller.js"></script>
 </head>
 
   <body ng-app="App">
 
-    <a ui-sref="form">Search Gifs</a>
-    <a ui-sref="collection">My Gifs</a>
+<div class="wrapper">
+  <div class="main-content">
+      <h2>Giphyfinder-ify</h2>
+
+      <a ui-sref="form" style="font-size: 20px">Search Gifs</a>  |
+      <a ui-sref="collection" >My Gifs</a>
+
+      <ui-view></ui-view>
+
+  </div>
+</div>
 
       <!-- <div>
         <form action="/gifs" method="POST">
@@ -26,7 +35,6 @@
         </form>
       </div> -->
 
-    <ui-view></ui-view>
 
   </body>
 </html>
