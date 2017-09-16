@@ -11,13 +11,13 @@ const GifSchema = new mongoose.Schema({ //build schema of Gif
   image: String
 });
 
-module.exports.Gif = mongoose.model('Gif', GifSchema); //export a Gif model that uses the schema
+const Gif = mongoose.model('Gif', GifSchema); //export a Gif model that uses the schema
 
-let save = (obj) => {   // save Gif to the DB
+Gif.save = (query, image, callback) => {   // save Gif to the DB
   return Gif.create({
     query: query,
-    image: url
-  })
+    image: image
+  }, callback)
 }
 
 let find = (obj) => {    // find Gif in the DB
@@ -25,3 +25,4 @@ let find = (obj) => {    // find Gif in the DB
 }
 
 module.exports.db = db
+module.exports.Gif = Gif

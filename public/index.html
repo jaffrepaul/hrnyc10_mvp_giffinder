@@ -1,18 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="App">
 <head>
   <meta charset="UTF-8">
   <title>MY APP</title>
   <!-- <script src="node_modules/angular/angular.js"></script> -->
-
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script> -->
+  <script src="/scripts/angular/angular.js"></script>
+  <script src="/scripts/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="/app.js"></script>
+  <script src="/services/link-factory.js"></script>
+  <script src="/controllers/form-controller.js"></script>
+  <script src="/controllers/list-controller.js"></script>
 </head>
-<body ng-app="myApp">
+
+  <body ng-app="App">
+
+    <a ui-sref="form">Search Gifs</a>
+    <a ui-sref="collection">My Gifs</a>
+
+      <!-- <div>
+        <form action="/gifs" method="POST">
+          <input type="text" placeholder="Search for a GIF" name="query">
+          <button type="submit">Submit</button>
+        </form>
+      </div> -->
+
+    <ui-view></ui-view>
+
+  </body>
+</html>
+
+<!-- <body ng-app="myApp">
 
 <p><a href="#/!">Search Gifs</a></p>
 <a href="#!collection">My Gifs</a>
 
 <script>
-const app = angular.module("myApp", ["ngRoute"]);
+let app = angular.module("myApp", ["ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
@@ -22,14 +47,6 @@ app.config(function($routeProvider) {
         templateUrl : "collection.html"
     })
 });
-</script>
+</script> -->
 
-  <div>
-    <form action="/gifs" method="POST">
-      <input type="text" placeholder="Search for a GIF" name="query">
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-
-</body>
-</html>
+<!-- <p><a href="#/!">Search Gifs</a></p> -->

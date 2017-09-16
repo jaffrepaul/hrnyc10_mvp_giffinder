@@ -16,38 +16,46 @@ app.use(bodyParser.urlencoded({ extended: false })); //get data from form & add 
 app.use(bodyParser.json()) // parse application/json
 
 // ========== Routes
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + '/index.html')
+// })
 
 // send user req to server
 app.post('/api/gif', (req, res) => {  // New entry created (data from Giphy)
 
-  console.log('POST req:', req.body.query); //dog
+  // console.log('POST req query:', req.body.query); //dog
 
   // first check if data is stored in DB
     // if true, res.send(entry)
-  if (true) {
-    Gif.findOne({query: 'dog'})
-      .exec(function(err, data) {
-        if (err) {
-          console.err(err);
-        } else {
-          res.send(data)
-        }
-      })
-  }
+  // if (true) {
+  //   Gif.findOne({query: 'dog'})
+  //     .exec(function(err, data) {
+  //       if (err) {
+  //         console.err(err);
+  //       } else {
+  //         res.send(data)
+  //       }
+  //     })
+  // }
 
     // if false, get data from Giphy
   axios.get(`http://api.giphy.com/v1/gifs/search?q=${req.body.query}&api_key=${process.env.GIPHY_API}&limit=5`)
-  .then(function(response) {
-    console.log('Giphy response', response.data);
-  // handle errors
-  //save to DB
-    // Gif.save(req.body);
-  //send data to client
-    // res.send(response);
+  .then( (response) => {
+    // build entry from scattered data
+    let query = req.body.query;
+    let gif = response.data.data[0].images.original.url;
+
+    //save entry to DB
+    Gif.save(query, gif, (err, gif) => {
+      res.send(gif);
+    })
   })
-  .catch(function(error) {
+
+  // handle errors
+  .catch( (error) => {
     console.error(error);
   })
+
 });
 
 //   db.collection('gifs').save(req.body, (err, result) => {
@@ -58,9 +66,9 @@ app.post('/api/gif', (req, res) => {  // New entry created (data from Giphy)
 //   })
 // })
 
-app.get('/api/gifs', function(req, res) { // Returns everything from our DB in an array
+app.get('/api/gifs', (req, res) => { // Returns everything from our DB in an array
   Gif.find({})
-    .then(function(gifs) {
+    .then( (gifs) => {
       res.send(gifs);
     });
   console.log('Got everything from DB');
@@ -89,6 +97,6 @@ app.get('/api/gifs', function(req, res) { // Returns everything from our DB in a
 
 
 // ========== Tell server where to listen
-app.listen(3000, function() {
+app.listen(3000, () => {
   console.log('listening in port 3000');
 });

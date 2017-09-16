@@ -1,0 +1,8 @@
+<div>
+  <h2>My Gifs</h2>
+  <div ng-repeat="gif in gifs track by $index"> <!-- ng-repeat is like forEach of data track by $index lets you display repeats (won't by default) -->
+
+    <img  ng-src="{{ gif.image }}">
+
+  </div>
+</div>
